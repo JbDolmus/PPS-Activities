@@ -3,7 +3,7 @@ import Comment from './Comment';
 import ReplyInput from './ReplyInput';
 import { useComment } from '../hooks/useComment';
 
-const CommentSection = ({ comments, setComments, currentUser }) => {
+const Target = ({ comments, setComments, currentUser }) => {
   const { insertComment } = useComment();
 
   const addComment = (text, parentId = 0) => {
@@ -36,4 +36,4 @@ const CommentSection = ({ comments, setComments, currentUser }) => {
   );
 };
 
-export default CommentSection;
+export default Target;
