@@ -1,28 +1,26 @@
 import React from 'react';
 import Comment from './Comment';
 import ReplyInput from './ReplyInput';
+import { useComment } from '../hooks/useComment';
 
 const CommentSection = ({ comments, setComments, currentUser }) => {
-  const addComment = (text, parentId = 0, replyingTo = null) => {
+  const { insertComment } = useComment();
+
+  const addComment = (text, parentId = 0) => {
     const newComment = {
-      parent: parentId,
       id: Date.now(),
       content: text,
-      createdAt: "Now",
+      createdAt: new Date().toLocaleString(),
       score: 0,
-      replyingTo,
       user: currentUser,
-      replies: []
+      replies: [],
     };
 
     if (parentId === 0) {
       setComments([...comments, newComment]);
     } else {
       const updatedComments = comments.map(comment => {
-        if (comment.id === parentId) {
-          return { ...comment, replies: [...comment.replies, newComment] };
-        }
-        return comment;
+        return insertComment(comment, parentId, text);
       });
       setComments(updatedComments);
     }

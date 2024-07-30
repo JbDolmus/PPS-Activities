@@ -6,7 +6,7 @@ function App() {
   const [comments, setComments] = useState(data.comments);
 
   return (
-    <div >
+    <div>
       <CommentSection comments={comments} setComments={setComments} currentUser={data.currentUser} />
     </div>
   );

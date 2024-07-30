@@ -34,6 +34,8 @@ a{
 }
 button{
     cursor: pointer;
+    border: none;
+    background-color: transparent;
 }
 button:hover{
     filter: saturate(80%);
@@ -126,7 +128,7 @@ button:hover{
     align-self: center;
     justify-self: flex-end;
 }
-.c-controls a{
+.c-controls button{
     align-items: center;
 }
 .edit , .reply{
